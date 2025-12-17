@@ -20,10 +20,7 @@ var (
 	goPool_maxErrOutputCD = 0
 )
 
-//	func Go(f func()) {
-//		go f()
-//	}
-func Go(f func()) {
+func GO(f func()) {
 	goPool_mu.Lock()
 	defer goPool_mu.Unlock()
 	if e := goPool.Submit(f); e != nil {

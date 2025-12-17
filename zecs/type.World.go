@@ -122,7 +122,7 @@ func (w *World) StartAutoUpdate() {
 		return
 	}
 	w.isAutoUpdateRunning = true
-	Go(func() {
+	GO(func() {
 
 		for {
 			if w.isMarkStopAutoUpdate {
@@ -547,7 +547,7 @@ func (w *World) UpdateDeltaTime(dt int64) {
 				for k := i; k < j; k++ {
 					w.sysParallelWG.Add(1)
 					sys := w.systems[k]
-					Go(func() {
+					GO(func() {
 						defer w.sysParallelWG.Done()
 						sys.Update(w, dt)
 					})
